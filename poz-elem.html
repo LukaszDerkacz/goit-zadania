@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="PL">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
+        <!-- css -->
+        <Title>9.Pozycjonowanie Elementów => 1. Pozycjonowanie elementów</Title>
+    </head>
+    <body>
+        <head>
+            <a href="#">9. Pozycjonowanie elementów</a>
+            <a href="#">9.1. Pozycjonowanie elementów</a>
+            <a href="#">9.2. Właściwość z-index</a>
+            <a href="#">9.3. Właściwość overflow</a>
+            <a href="#">10. Animacja</a>
+        </head>
+        <main>
+            <h1>Pozycjonowanie elementów</h1>
+            <div>
+                <p>
+                    Domyślne elementy na stronie są rozmieszczone od lewek do prawej i od góry 
+                    do dołu. Ale jak zrobić napis na zdjęciu produktu, pokazać jeden element na 
+                    drugim po najechaniu kursorem lub sprawić, by menu zawsze było dołączone do 
+                    górnej części rzutni, nawet podczas przewijania? Aby rozwiązać takie problemy, 
+                    istnieje właściwość <span>position</span>, która pozwala dosłownie podnieść 
+                    element i umieścić go na innym.
+                </p>
+                <!-- css-positioning-schemes-one.png -->
+                <p>
+                    Statystyczne pozycjonowanie(<span>static</span>) to początkowy stan wszystkich 
+                    elementów strony internetowej. Model blokowy i flexbox umieszczają elementy w 
+                    statycznym przepływnie strony. Względne (<span>relative</span>), bezwzględne 
+                    (<span>absolute</span>) oraz ustalone (<span>fixed</span>) pozycjonowania pozwalają 
+                    na podniesienie elementu nad przepływem strony i ręczne pozycjonowanie za pomocą układu 
+                    współrzędnych, którego początek zależy od rodzaju pozycjonowania.
+                </p>
+            </div>
+            <div>
+                <h3>UWAGA</h3>
+                <p>
+                    Zdecydowana większość elementów powinna być ułożona zgodnie ze standardowym statycznym 
+                    przepływem strony. Inne schematy pozycjonowania stosowane są do efektów dekoracyjnych oraz w 
+                    przypadku, gdy nie jest możliwe inne pozycjonowanie.
+                </p>
+            </div>
+            <div>
+                <h2>Właściwość <span>position</span></h2>
+                <p>
+                    Zmienia typ pozycjonowania elementu. Wartość domyślna to <span>static</span>. Aby wskazać pozycję 
+                    elementu, używane są właściwości <span>top</span>, <span>left</span>, <span>bottom</span> albo 
+                    <span>right</span>, które nie mają zastosowania 
+                    do elementów bez <span>position</span>.
+                </p>
+                <div>
+                    <p>
+                        position: static | relative | absolute | fixed | sticky | inherit
+                    </p>
+                </div>
+                <p>
+                    Element z wartością właściwości <span>position</span> inną niż <span>static</span> nazywany jest „elementem pozycjonowanym”.
+                </p>
+                <!-- positioned-elements-two.png -->
+            </div>
+            <div>
+                <h2>Pozycjonowanie względne</h2>
+                <p>
+                    Przy pozycjonowaniu względnym element pozostaje w przepływie strony, czyli elementy sąsiednie nie zajmują jego miejsca. 
+                    Jednak wizualnie element można przesunąć względem jego pierwotnego położenia, podczas gdy on może zachodzić na swoich sąsiadów.
+                </p>
+                <!-- relative-positioning-thre.png -->
+                <p>
+                    Właściwości <span>top</span>, <span>left</span>, <span>bottom</span> i <span>right</span> pozwalają określić przesunięcie 
+                    elementu (wizualnie) w stosunku do jego pierwotnej pozycji. Mogą przyjmować wartości ujemne. 
+                </p>
+                <!-- relative-positioning-offsets-for.png -->
+            </div>
+            <div>
+                <h3>POMOCNE</h3>
+                <p>
+                    Samo pozycjonowanie względne nie jest używane, ponieważ element nie wyłamuje się z przepływu strony, nadal zajmując miejsce. 
+                    Używane tylko w połączeniu z pozycjonowaniem bezwzględnym.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Stwórzmy trzy bloki. Ustawimy środkowemu <span>div.relative</span> pozycjonowanie względne i wizualnie przesuniemy go w prawo i w dół w 
+                    stosunku do pozycji początkowej. 
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/XWXLEad -->
+                <!-- HTML -->
+                <!-- <div class="container">
+                    <div class="box"></div>
+                    <div class="box relative"></div>
+                    <div class="box"></div>
+                </div> -->
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    background-color: #f9f9fd;
+                  }
+                  
+                  .container {
+                    display: flex;
+                    justify-content: center;
+                    margin: 0 auto;
+                  }
+                  
+                  .box {
+                    width: 200px;
+                    height: 200px;
+                    flex-shrink: 0;
+                    margin: 20px;
+                    border-radius: 4px;
+                    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                  }
+                  
+                  .box.relative {
+                    position: relative;
+                    top: 120px;
+                    left: 120px;
+                  }
+                  
+                  .box:nth-child(1) {
+                    background-color: teal;
+                  }
+                  
+                  .box:nth-child(2) {
+                    background-color: orange;
+                  }
+                  
+                  .box:nth-child(3) {
+                    background-color: palevioletred;
+                  } -->
+            </div>            
+            <div>
+                <h2>Pozycjonowanie absolutne (bezwzględne)</h2>
+                <p>
+                    W przypadku pozycjonowania bezwzględnego element jest wyciągany z przepływu 
+                    strony, to znaczy sąsiednie elementy zajmują jego miejsce. Wartości <span>top</span>, <span>left</span>, 
+                    <span>bottom</span> i <span>right</span> dla elementu pozycjonowanego bezwzględnie są liczone względem 
+                    najbliższego przodka z pozycjonowaniem innym niż statyczne. Jeśli nie ma takiego 
+                    przodka, to liczenie zostanie wykonane od granic elementu <span>body</span>.
+                </p>
+                <!-- absolute-positioning-five.png -->
+                <p>
+                    Samo pozycjonowanie bezwzględne nie jest zbyt użyteczne i jest używane na przykład w połączeniu z 
+                    pozycjonowaniem względnym do dekoracyjnego pozycjonowania elementów. Oznacza to, że element „bezwzględny” 
+                    jest pozycjonowany jako „względny” w stosunku do niektórych swoich przodków, które znajdują się w przepływie stron.
+                </p>
+                <!-- relatively-absolute-positioning-seven.png -->
+                <p>
+                    Następnie wartości <span>top</span>, <span>left</span>, <span>right</span> i <span>bottom</span>, dla bezwzględnie 
+                    pozycjonowanego elementu są liczone od granic tego przodka, a nie od <span>body</span>. Oznacza to, że ustawienie 
+                    <span>position: relative</span> dla przodka jest używane wyłącznie w celu umieszczenia elementu pozycjonowanego bezwzględnie 
+                    względem tego przodka.
+                </p>
+            </div>
+            <div>
+                <h3>POMOCNE</h3>
+                <p>
+                    Wpis <span>bottom: 20px</span> oznacza odległość między dolną granicą pozycjonowanego względnie przodka a dolną granicą elementu pozycjonowanego 
+                    bezwzględnie. Podobnie działa <span>right</span>, <span>left</span> i <span>top</span> - odległość jest ustawiona między stronami o takich samych nazwach przodka i elementu.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Stwórzmy trzy bloki z obrazem i tekstem w każdym. Ustawmy <span>div.thumb</span> na pozycjonowanie względne, a <span>p.label</span> na pozycjonowanie bezwzględne, abyśmy mogli umieścić tekst nad 
+                    obrazem w tym bloku. Nie zapomnijmy usunąć z <span>p.label</span> margines (margin), ponieważ wpływa on na przesunięcie samego elementu, ale nie innych elementów w przepływie.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/vYLqRJd -->
+                <!-- HTML -->
+                <!-- <div class="container">
+                    <div class="thumb">
+                      <img src="https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=320" alt="two-yellow-labrador-retriever-puppies">
+                      <p class="label">Dog</p>
+                    </div>
+                  
+                    <div class="thumb">
+                      <img src="https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg?auto=compress&cs=tinysrgb&dpr=2&&w=320" alt="adorable-animal-blur-cat">
+                      <p class="label">Cat</p>
+                    </div>
+                  
+                    <div class="thumb">
+                      <img src="https://images.pexels.com/photos/1300361/pexels-photo-1300361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=320" alt="black-hog-prone-lying-on-soil-under-shade-of-tree">
+                      <p class="label">Pig</p>
+                    </div>
+                  </div> -->
+                  <!-- CSS -->
+                  <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    background-color: #f9f9fd;
+                  }
+                  
+                  img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                  }
+                  
+                  .container {
+                    display: flex;
+                    justify-content: center;
+                    margin: 0 auto;
+                  }
+                  
+                  .thumb {
+                    position: relative;
+                    margin: 10px;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    background-color: #fff;
+                    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                  }
+                  
+                  .thumb > .label {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    margin: 0;
+                    padding: 8px 16px;
+                    border-bottom-left-radius: 4px;
+                  
+                    font-family: sans-serif;
+                    font-size: 24px;
+                    background-color: #2196f3;
+                    color: #fff;
+                  } -->
+            </div>
+            <div>
+                <h3>UWAGA</h3>
+                <p>
+                    Jeśli nie ustawisz względnego pozycjonowania <span>div.thumb</span>, wszystkie trzy <span>p.label</span> 
+                    pojawią się w prawym górnym rogu okna, ponieważ wartości <span>top</span> i <span>right</span> będą odliczane 
+                    względem elementu <span>body</span>.
+                </p>
+            </div>
+            <div>
+                <h2>Pozycjonowanie ustalone</h2>
+                <p>
+                    Przy ustalonym pozycjonowaniu element jest usuwany z przepływu strony i pozycjonowany względem rzutni (okna przeglądarki). Stwarza to efekt ustalania elementu w określonym miejscu na ekranie podczas przewijania strony.
+                </p>
+                <!-- fixed-positioning-eight.png -->
+                <p>
+                    Ustalone pozycjonowanie służy do przypinanych nagłówków z nawigacją, OBJ wyskakujących okienek, czatów z menedżerem na stronach sklepów internetowych itp.
+                </p>
+                <!-- fixed-positioning-animated-nine.gif -->
+                <p>
+                    Stwórzmy przycisk czatu z menedżerem <span>button.chat-button</span> i umieśćmy go w prawym dolnym rogu rzutni. Podczas przewijania strony przycisk pozostaje na miejscu, ponieważ ma stałą pozycję.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/OJMevjB -->
+                <!-- HTML -->
+                <!-- <button class="chat-button"></button>
+
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat iste reprehenderit debitis hic cupiditate dolorem repudiandae, recusandae id esse delectus magnam maxime nobis, tenetur officiis deleniti quo omnis, eligendi dolores alias sit reiciendis autem? Vero quo debitis dolorem error minus sint tenetur iusto commodi nihil itaque impedit cum facilis eveniet dolore explicabo rerum repudiandae nisi quasi provident doloremque, inventore dignissimos! Laborum repellat assumenda, maiores, cumque non provident animi error nam asperiores vitae sed saepe nesciunt, facere eligendi. Aliquid, delectus. Quasi et, cumque ipsa nesciunt velit voluptates tenetur fugiat, provident nobis cupiditate facilis quaerat magni, ipsum reiciendis? Placeat, facere. Provident, quam doloremque. Architecto cum, nisi dolores, ipsa eaque maiores fugiat magnam quasi sunt amet culpa quod necessitatibus quisquam recusandae veniam aperiam modi animi. At quae ea ducimus vero aperiam ratione, ullam architecto ut assumenda vel natus commodi quisquam tempora! Magni omnis voluptatibus, veritatis saepe illo rem aspernatur unde. Maiores, earum illum. Nemo modi debitis culpa commodi aliquam molestias quas ipsam ex nostrum perferendis ratione adipisci a, ullam esse porro, doloribus, asperiores voluptatem at? Cupiditate explicabo dolore ipsa voluptate totam reprehenderit doloremque aut. Eius, pariatur magni nisi, optio enim odio porro cum fuga quasi, quis rerum incidunt eligendi corporis dolor autem ad!</p>
+                <p>Aliquid repellat voluptatem quam labore maiores veritatis, qui minima velit autem dolorem sequi nostrum ad ipsa ratione laboriosam incidunt officiis eaque sed dicta nulla eligendi totam sapiente non modi? Repudiandae est, nobis consectetur nulla consequuntur tempora molestiae debitis blanditiis quas minima. Fugit ducimus magni velit eveniet dicta veniam suscipit officia vel itaque, libero iste placeat quasi ex quibusdam beatae consequuntur facere officiis? Quae aut, magni saepe repellendus eaque minima. Sunt fugit ad id? Assumenda aliquam quas maiores, vel illum atque asperiores commodi dolorem facilis? Assumenda expedita consequuntur quasi eligendi. Corrupti sunt, minima odit illo eum error vel praesentium, quod nihil, ad accusantium quibusdam atque odio. Quod aut perspiciatis sunt sed quae fuga illo consequuntur delectus? Iusto magni doloribus error iure, enim dolorem, culpa dolore placeat ea esse corrupti. Sapiente, repellendus aperiam, nisi quis officiis natus assumenda pariatur blanditiis aspernatur voluptas totam perferendis. Delectus voluptas beatae perspiciatis tempora dolorum veritatis corrupti alias incidunt dolorem fugiat. Nobis provident nisi animi, possimus hic tempora et sunt iste qui voluptatibus eveniet iusto, reprehenderit impedit quod, culpa delectus iure officia cum rerum harum. Eveniet perferendis et ratione autem beatae repellendus, corporis eos tenetur voluptate possimus quae quisquam accusantium qui nihil fugiat fugit error impedit molestiae.</p>
+                <p>Fuga in dolorum quod suscipit nisi officia, laborum, nesciunt voluptatem esse consequatur harum iste accusantium, nihil excepturi odio tempora iusto possimus. Adipisci, obcaecati! Asperiores aut nisi repellat accusantium, ab numquam nostrum commodi reiciendis itaque amet dolore repellendus rem harum qui dolor voluptatem esse sunt eos ex consequuntur voluptate fugiat ipsa error minus! Cumque animi omnis placeat temporibus voluptatum sequi perferendis enim est, sunt accusantium optio similique illo, consequatur quasi provident culpa. Ea porro esse dolorum? Unde quod illum quos, molestiae iure illo beatae, nemo atque consectetur, qui earum minima necessitatibus excepturi adipisci eos dolore sint vel tempora voluptate? Quam deserunt ipsum consectetur dolore eum quibusdam voluptates nam, sed et voluptate, veniam atque esse fugiat sequi, neque omnis. Expedita ut mollitia eveniet voluptatibus ipsam, rem reprehenderit eligendi corporis provident soluta ea quo, ratione dignissimos unde quae labore! Vitae nam placeat voluptate dicta asperiores, quibusdam sequi, enim magni porro facilis, omnis laudantium officia? Illum fugit quia exercitationem provident ratione iure! Ipsa voluptates asperiores, doloribus quia facere labore facilis molestias delectus tempore nesciunt, optio omnis reprehenderit, exercitationem blanditiis numquam quidem ipsum. Atque et earum reprehenderit amet nostrum, dignissimos delectus, aut quas a accusamus corrupti voluptate repudiandae quia, ipsa cupiditate similique perferendis dolor doloribus!</p>
+                <p>Voluptas, facilis accusantium? Eveniet error ea consectetur enim quas consequuntur provident doloremque facere neque sit sed accusamus, saepe laboriosam aut? Error rem ratione similique explicabo, repellat doloribus quos sint quaerat dolorem magnam dolor atque aliquam fugit ea, aliquid nisi in vero repudiandae voluptates totam consequuntur temporibus. Molestias voluptate, blanditiis amet expedita explicabo aperiam minus nesciunt itaque vitae maxime, velit, ad consequatur obcaecati delectus ex id eum nihil? In pariatur odit sequi ducimus nobis nihil distinctio commodi mollitia eos id temporibus magni totam corporis aliquid, labore nostrum unde hic corrupti perspiciatis veritatis ea dicta. Fugiat facere numquam nesciunt tempore quasi voluptates dolor in eum, sit unde iure at ipsum ex nisi optio architecto saepe sequi quaerat, a nam? Ratione unde magni ex natus vel ad autem tempora illo sunt corrupti, facilis odit, excepturi at culpa ullam eaque delectus qui repellat molestiae voluptatibus! Eveniet minima hic accusantium rem aut officiis quae repellendus, quam alias sequi laboriosam, quas corporis tempore debitis? Sed eius fugiat inventore tenetur, ducimus ipsa culpa harum velit ea numquam neque ullam molestias nesciunt sit obcaecati rem esse! Quam excepturi quaerat tempora. Corporis, nemo saepe tempore sed ipsum eum porro incidunt aperiam fugiat consequuntur? Tenetur officiis nostrum explicabo. Odit, atque?</p>
+                -->
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    font-family: sans-serif;
+                    line-height: 1.5;
+                  }
+                  
+                  .chat-button {
+                    position: fixed;
+                    right: 30px;
+                    bottom: 30px;
+                  
+                    display: inline-block;
+                    width: 64px;
+                    height: 64px;
+                  
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    background-color: transparent;
+                  
+                    background-image: url("https://cdn-icons-png.flaticon.com/512/1653/1653630.png");
+                    background-size: contain;
+                  
+                    cursor: pointer;
+                  } -->    
+            </div>
+            <div>
+                <h2>Lepkie pozycjonowanie</h2>
+                <p>
+                    Lepkie pozycjonowanie (<span>sticky</span>) jest jak połączenie właściwości <span>relative</span> i <span>fixed</span>. 
+                    Najpierw spójrz na ilustrację, na której pozycjonowanie lepkie jest przypisane do 
+                    elementów z literami <span>A</span> i <span>B</span>, aby było od razu jasne.
+                </p>
+                <!-- position-sticky-2-ten.gif -->
+                <ul>
+                    <ol>Dopóki element znajduje się w swoim kontenerze, a kontener nie opuszcza obszar widoczności podczas przewijania w pionie, element zachowuje się tak, jakby był umieszczony względnie (relative).</ol>
+                    <ol>Gdy tylko część kontenera nadrzędnego opuści obszar widoczności, element jest ustalany na stronie, o ile przynajmniej część kontenera znajduje się na ekranie.</ol>
+                    <ol>Jeśli cały kontener opuści zasięg widoczności, to ponownie włączy się zachowanie jak przy pozycjonowaniu względnym - element zniknie z ekranu po kontenerze.</ol>
+                </ul>
+                <p>
+                    Aby zaimplementować pozycjonowanie lepkie, wymagane są tylko trzy warunki:
+                </p>
+                <ul>
+                    <li>Dla lepkiego elementu należy ustawić pozycjonowanie <span>position: sticky</span>.</li>
+                    <li>Element lepki musi mieć ustawioną pozycję, np. <span>top: 0</span>.</li>
+                    <li>Element-kontener musi mieć większą wysokość niż element lepki.</li>
+                </ul>
+                <p>
+                    Nagłówki sekcji w przykładzie są lepkie, więc podczas przewijania strony one będą "przyklejać się" do górnej części obszaru widoku, o ile jakaś część ich sekcji jest widoczna.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/pogXLWz -->
+                <!-- HTML -->
+                <!-- <section class="section">
+                    <h2 class="section-title">First section heading</h2>
+                    <p class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, excepturi? Et molestiae aspernatur, recusandae itaque veritatis reprehenderit facere deserunt corrupti nesciunt beatae quos vitae? Voluptatibus recusandae quis at, fugit vero alias facilis, corrupti labore in, explicabo beatae? Vel labore cum voluptatum ullam amet nihil quia excepturi similique assumenda obcaecati? Quis quibusdam nam unde, magni non repellat. Aliquam voluptatibus, vel, incidunt ut facilis, inventore amet sint quisquam neque consequatur hic. Exercitationem itaque inventore ad amet corporis labore cupiditate eius ullam voluptates nihil, fugit vero a velit esse voluptas consequatur eos minima quod assumenda ab officia repudiandae dicta sint. Voluptate nemo dolor sapiente impedit! Nam velit repellat cupiditate! Cum hic sint fugiat necessitatibus ipsam pariatur debitis minus est, eum eos ratione enim porro exercitationem facere, a voluptas obcaecati voluptatibus cupiditate beatae deserunt aliquam iusto aut quas temporibus! Harum officia in voluptatum! Quidem, voluptatibus culpa repellendus incidunt aspernatur saepe, ipsum officia, inventore quo maiores libero quaerat ipsa dignissimos labore blanditiis provident qui recusandae sunt dolorem? Necessitatibus maiores et quos odit nemo quas quibusdam, aliquam voluptatum sint cupiditate sequi consequatur cumque nulla quaerat at perspiciatis quis voluptatibus natus fuga dignissimos accusamus. Odio, quibusdam fuga earum sit explicabo cumque, facilis consequatur et voluptas doloribus rerum.</p>
+                  </section>
+                  
+                  <section class="section">
+                    <h2 class="section-title">Second section heading</h2>
+                    <p class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, excepturi? Et molestiae aspernatur, recusandae itaque veritatis reprehenderit facere deserunt corrupti nesciunt beatae quos vitae? Voluptatibus recusandae quis at, fugit vero alias facilis, corrupti labore in, explicabo beatae? Vel labore cum voluptatum ullam amet nihil quia excepturi similique assumenda obcaecati? Quis quibusdam nam unde, magni non repellat. Aliquam voluptatibus, vel, incidunt ut facilis, inventore amet sint quisquam neque consequatur hic. Exercitationem itaque inventore ad amet corporis labore cupiditate eius ullam voluptates nihil, fugit vero a velit esse voluptas consequatur eos minima quod assumenda ab officia repudiandae dicta sint. Voluptate nemo dolor sapiente impedit! Nam velit repellat cupiditate! Cum hic sint fugiat necessitatibus ipsam pariatur debitis minus est, eum eos ratione enim porro exercitationem facere, a voluptas obcaecati voluptatibus cupiditate beatae deserunt aliquam iusto aut quas temporibus! Harum officia in voluptatum! Quidem, voluptatibus culpa repellendus incidunt aspernatur saepe, ipsum officia, inventore quo maiores libero quaerat ipsa dignissimos labore blanditiis provident qui recusandae sunt dolorem? Necessitatibus maiores et quos odit nemo quas quibusdam, aliquam voluptatum sint cupiditate sequi consequatur cumque nulla quaerat at perspiciatis quis voluptatibus natus fuga dignissimos accusamus. Odio, quibusdam fuga earum sit explicabo cumque, facilis consequatur et voluptas doloribus rerum.</p>
+                  </section>
+                  
+                  <section class="section">
+                    <h2 class="section-title">Third section heading</h2>
+                    <p class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, excepturi? Et molestiae aspernatur, recusandae itaque veritatis reprehenderit facere deserunt corrupti nesciunt beatae quos vitae? Voluptatibus recusandae quis at, fugit vero alias facilis, corrupti labore in, explicabo beatae? Vel labore cum voluptatum ullam amet nihil quia excepturi similique assumenda obcaecati? Quis quibusdam nam unde, magni non repellat. Aliquam voluptatibus, vel, incidunt ut facilis, inventore amet sint quisquam neque consequatur hic. Exercitationem itaque inventore ad amet corporis labore cupiditate eius ullam voluptates nihil, fugit vero a velit esse voluptas consequatur eos minima quod assumenda ab officia repudiandae dicta sint. Voluptate nemo dolor sapiente impedit! Nam velit repellat cupiditate! Cum hic sint fugiat necessitatibus ipsam pariatur debitis minus est, eum eos ratione enim porro exercitationem facere, a voluptas obcaecati voluptatibus cupiditate beatae deserunt aliquam iusto aut quas temporibus! Harum officia in voluptatum! Quidem, voluptatibus culpa repellendus incidunt aspernatur saepe, ipsum officia, inventore quo maiores libero quaerat ipsa dignissimos labore blanditiis provident qui recusandae sunt dolorem? Necessitatibus maiores et quos odit nemo quas quibusdam, aliquam voluptatum sint cupiditate sequi consequatur cumque nulla quaerat at perspiciatis quis voluptatibus natus fuga dignissimos accusamus. Odio, quibusdam fuga earum sit explicabo cumque, facilis consequatur et voluptas doloribus rerum.</p>
+                  </section>
+                  
+                  <section class="section">
+                    <h2 class="section-title">Fourth section heading</h2>
+                    <p class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, excepturi? Et molestiae aspernatur, recusandae itaque veritatis reprehenderit facere deserunt corrupti nesciunt beatae quos vitae? Voluptatibus recusandae quis at, fugit vero alias facilis, corrupti labore in, explicabo beatae? Vel labore cum voluptatum ullam amet nihil quia excepturi similique assumenda obcaecati? Quis quibusdam nam unde, magni non repellat. Aliquam voluptatibus, vel, incidunt ut facilis, inventore amet sint quisquam neque consequatur hic. Exercitationem itaque inventore ad amet corporis labore cupiditate eius ullam voluptates nihil, fugit vero a velit esse voluptas consequatur eos minima quod assumenda ab officia repudiandae dicta sint. Voluptate nemo dolor sapiente impedit! Nam velit repellat cupiditate! Cum hic sint fugiat necessitatibus ipsam pariatur debitis minus est, eum eos ratione enim porro exercitationem facere, a voluptas obcaecati voluptatibus cupiditate beatae deserunt aliquam iusto aut quas temporibus! Harum officia in voluptatum! Quidem, voluptatibus culpa repellendus incidunt aspernatur saepe, ipsum officia, inventore quo maiores libero quaerat ipsa dignissimos labore blanditiis provident qui recusandae sunt dolorem? Necessitatibus maiores et quos odit nemo quas quibusdam, aliquam voluptatum sint cupiditate sequi consequatur cumque nulla quaerat at perspiciatis quis voluptatibus natus fuga dignissimos accusamus. Odio, quibusdam fuga earum sit explicabo cumque, facilis consequatur et voluptas doloribus rerum.</p>
+                  </section> -->
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    margin: 0;
+                    font-family: sans-serif;
+                    line-height: 1.5;
+                    background-color: #f9f9fd;
+                    color: #2a2a2a;
+                  }
+                  
+                  .section {
+                    margin-bottom: 20px;
+                  }
+                  
+                  .section-title {
+                    position: sticky;
+                    top: -1px;
+                  
+                    margin: 0;
+                    padding: 16px;
+                    background-color: #ccc;
+                    text-align: center;
+                    text-transform: uppercase;
+                  
+                    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+                  }
+                  
+                  .section-text {
+                    font-size: 18px;
+                    margin-bottom: 0;
+                  }
+                  
+                  .section:nth-child(1) .section-title {
+                    color: #fff;
+                    background-image: repeating-linear-gradient(
+                      -45deg,
+                      #606dbc,
+                      #606dbc 10px,
+                      #465298 10px,
+                      #465298 20px
+                    );
+                  }
+                  
+                  .section:nth-child(2) .section-title {
+                    background-image: repeating-linear-gradient(
+                      to right,
+                      #f6ba52,
+                      #f6ba52 10px,
+                      #ffd180 10px,
+                      #ffd180 20px
+                    );
+                  }
+                  
+                  .section:nth-child(3) .section-title {
+                    color: #fff;
+                    background-image: repeating-radial-gradient(
+                      circle,
+                      purple,
+                      purple 10px,
+                      #4b026f 10px,
+                      #4b026f 20px
+                    );
+                  }
+                  
+                  .section:nth-child(4) .section-title {
+                    color: #fff;
+                    background-image: repeating-linear-gradient(
+                      to right,
+                      #ff8a00,
+                      #ff8a00 10px,
+                      #e52e71 10px,
+                      #e52e71 20px
+                    );
+                  } -->
+            </div>
+        </main>
+        <footer>
+            <a href="#">Właściwość <span>position</span></a>
+            <a href="#">Pozycjonowanie względne</a>
+            <a href="#">Pozycjonowanie absolutne (bezwzględne)</a>
+            <a href="#">Pozycjonowanie ustalone</a>
+            <a href="#">Lepkie  pozycjonowanie</a>
+        </footer>
+    </body>
+</html>

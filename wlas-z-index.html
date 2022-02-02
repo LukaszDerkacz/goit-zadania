@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="PL">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.1"/> 
+        <!-- CSS -->
+        <title>9.Pozycjonowanie Elementów => 2. Właściwość z-index</title>
+    </head>
+    <body>
+        <HEAder>
+            <a href="#">9. Pozycjonowanie elementów</a>
+            <a href="#">9.1. Pozycjonowanie elementów</a>
+            <a href="#">9.2. Właściwość z-index</a>
+            <a href="#">9.3. Właściwość overflow</a>
+            <a href="#">10. Animacja</a>
+        </HEAder>
+        <main>
+            <div>
+                <h1>Właściwość z-index</h1>
+                <p>
+                    Zanim dowiedzieliśmy się o pozycjonowanych elementach, nie mieliśmy problemów z głębią. Elementy rozłożyliśmy w dwuwymiarowym układzie współrzędnych - <span>x</span> w poziomie i <span>y</span> w pionie. Kolejność wyświetlania została ustawiona wyłącznie przez zagnieżdżanie się elementów - przodek znajdował się na dole jak kartka papieru, a potomek był jak nowa kartka papieru leżąca na wierzchu.
+                </p>
+                <p>
+                    Pozycjonowane elementy zachowują się inaczej. Wypadają z przepływu, co oznacza, że potrzebują reguły, która określi, który element jest wyższy, a który niższy na osi <span>z</span> - prostopadłej do płaszczyzny ekranu.
+                </p>
+                <p>
+                    Ta reguła ustawia właściwość <span>z-index</span>, która kontroluje głębokość (kolejność) pozycjonowanych elementów na stronie wzdłuż osi <span>z</span> - od oczu użytkownika do ekranu. Wartości mogą być dowolną liczbą całkowitą, w tym ujemną.
+                </p>
+            </div>
+            <div>
+                <h2>Zasady stosowania</h2>
+                <p>
+                    Wspólny przodek pozycjonowanych elementów tworzy <strong>kontekst</strong> (stacking context) - obszar, w którym właściwość <span>z-index</span> elementu wpływa na inne elementy z <span>z-index</span>. Im większa wartość <span>z-index</span> wewnątrz tego kontekstu, tym wyższy jest element.
+                </p>
+                <!-- z-index-stacking-eleven.jpg -->
+                <p>
+                    Minimalna (nawet ujemna) wartość <span>z-index</span> oznacza, że inne elementy poza przepływem będą wyższe niż ten element. Jeśli dwa elementy mają takie same wartości <span>z-index</span>, wyżej będzie ten element, który został ostatni zadeklarowany w kodzie HTML.
+                </p>
+                <p>
+                    Jest wiele zasad, ale w rzeczywistości wszystko jest bardzo proste. W tym przykładzie <span>div.container</span> z pozycjonowaniem względnym jest wspólnym przodkiem czterech <span>div.box</span>, które są pozycjonowane w nim bezwzględnie. Używając właściwości <span>z-index</span> możesz zmienić kolejność ich wyświetlania na osi <span>z</span>.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/qBbzoVm -->
+                <!-- HTML -->
+                <!-- <div class="container">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                </div> -->
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    margin: 0;
+                    font-family: sans-serif;
+                    background-color: #f9f9fd;
+                  }
+                  
+                  .container {
+                    min-height: 100vh;
+                    position: relative;
+                  }
+                  
+                  .box {
+                    position: absolute;
+                    height: 150px;
+                    width: 150px;
+                  
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 4px;
+                    font-size: 64px;
+                    color: #fff;
+                  
+                    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                  }
+                  
+                  .box:nth-child(1) {
+                    top: 20px;
+                    left: 130px;
+                    background-color: #1789fc;
+                  
+                    z-index: 2;
+                  }
+                  
+                  .box:nth-child(2) {
+                    top: 30px;
+                    left: 230px;
+                    background-color: #ef233c;
+                  
+                    z-index: 2;
+                  }
+                  
+                  .box:nth-child(3) {
+                    top: 140px;
+                    left: 220px;
+                    background-color: #ffd07b;
+                    z-index: 1;
+                  }
+                  
+                  .box:nth-child(4) {
+                    top: 120px;
+                    left: 120px;
+                    background-color: #4caf50;
+                  } -->
+                  
+            </div>
+        </main>
+        <footer>
+            <a href="#">Zasady stosowania</a>
+        </footer>        
+    </body>
+</html>

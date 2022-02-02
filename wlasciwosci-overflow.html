@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="PL">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.1"/>
+        CSS
+        <title>9.Pozycjonowanie Elementów => 3. Właściwość overflow</title>
+    </head>
+    <body>
+        <header>
+            <a href="#">9. Pozycjonowanie elementów</a>
+            <a href="#">9.1. Pozycjonowanie elementów</a>
+            <a href="#">9.2. Właściwość z-index</a>
+            <a href="#">9.3. Właściwość overflow</a>
+            <a href="#">10. Animacja</a>
+        </header>
+        <main>
+            <div>
+                <h1>Właściwość overflow</h1>
+                <p>
+                    Wymiary elementu są określane przez zawartość wewnątrz niego lub są wyraźnie określone. Co się dzieje, gdy zawartość zmienia się wewnątrz elementu? Na przykład, jeśli nie ustawisz wysokości, ona będzie rosła, aż cała zawartość zmieści się w elemencie.
+                </p>
+                <p>
+                    Ale co, jeśli wysokość lub szerokość są wyraźnie określone? Wtedy blok nie może się rozrosnąć, a jego zawartość przepełnia się - wychodzi poza granice. Właściwość <span>overflow</span> kontroluje zachowanie zawartości elementu, jeśli jest zbyt duża długość lub szerokość.
+                </p>
+                <!-- overflow: visible | hidden | scroll | auto -->
+                <ul>
+                    <li><span>visible</span> - przepełniona treść jest widoczna. Domyślna wartość.</li>
+                    <li><span>hidden</span> - wszystko, co wykracza poza granice bloku, zostanie wizualnie ukryte.</li>
+                    <li><span>scroll</span> - przy przepełnieniu pojawiają się poziome i pionowe paski przewijania, nawet jeśli potrzebny jest tylko jeden.</li>
+                    <li><span>auto</span> - podobne do wartości <span>scroll</span>, ale paski przewijania są wyświetlane tylko tam, gdzie są naprawdę potrzebne, a nie wszystkie na raz.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>POMOCNE</h3>
+                <p>
+                    Istnieją również właściwości <span>overflow-x</span> i <span>overflow-y</span> do kontrolowania przepełnienia, tylko w odpowiedniej płaszczyźnie.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Przyjrzyjmy się zachowaniu elementu o stałym rozmiarze dla każdej wartości <span>overflow</span>.
+                </p>
+            </div>
+            <div>
+                <h2>Wartość <span>visible</span></h2>
+                <p>
+                    Jeśli nie określisz właściwości <span>overflow</span>, domyślnie jest to wartość <span>visible</span> a przy przepełnieniu zawartość będzie wyświetlana poza blokiem. W tym przykładzie obramowanie bloku jest oznaczone czerwoną obwódką.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/vYLaJeM -->
+                <!-- HTML -->
+                <!-- <div class="box">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cum quibusdam similique debitis eos, fuga in ipsum quaerat impedit, nam error atque sequi laudantium incidunt hic assumenda! Autem, voluptatum ratione. Ab illum quasi exercitationem dignissimos, quae est eaque eligendi maxime omnis laudantium quos, doloremque adipisci quidem dicta recusandae facilis? Velit, commodi consectetur, quas a repudiandae magni illo iure rem obcaecati quam officiis cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae voluptate incidunt alias, possimus laudantium molestias soluta, ea nihil delectus praesentium ipsum ducimus aspernatur placeat a totam deserunt! Vel quaerat deleniti dolore aperiam similique nam harum, aliquam fugiat adipisci aliquid laborum amet.
+                  </div>
+                  
+                  <button>The text overflowing outside the div.box will not affect the position of this button, because the overflow is only visual.</button>
+                 -->
+                  <!-- CSS -->
+                  <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    line-height: 1.5;
+                    font-family: sans-serif;
+                  }
+                  
+                  .box {
+                    border: 2px solid tomato;
+                    width: 400px;
+                    height: 200px;
+                  }
+                  
+                  button {
+                    display: inline-block;
+                    margin-top: 30px;
+                    width: 360px;
+                    font: inherit;
+                  } -->
+            </div>
+            <div>
+                <h3>UWAGA</h3>
+                <p>
+                    Ważną rzeczą do zapamiętania jest tutaj to, że nawet jeśli widoczna treść przepełnia element na zewnątrz elementu, zawartość ta nie wpływa na geometrię sąsiednich elementów, jak w przypadku przycisku w przykładzie.
+                </p>
+            </div>
+            <div>
+                <h2>Wartość <span>hidden</span></h2>
+                <p>
+                    Wartość przeciwna to <span>hidden</span>. W takim przypadku zawartość przepełniona, która wykracza poza granice elementu, nie jest wyświetlana. To zachowanie jest przydatne w przypadku efektów dekoracyjnych, którym przyjrzymy się dalej.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/PoZBKBq -->
+                <!-- HTML -->
+                <!-- <div class="box">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cum quibusdam similique debitis eos, fuga in ipsum quaerat impedit, nam error atque sequi laudantium incidunt hic assumenda! Autem, voluptatum ratione. Ab illum quasi exercitationem dignissimos, quae est eaque eligendi maxime omnis laudantium quos, doloremque adipisci quidem dicta recusandae facilis? Velit, commodi consectetur, quas a repudiandae magni illo iure rem obcaecati quam officiis cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae voluptate incidunt alias, possimus laudantium molestias soluta, ea nihil delectus praesentium ipsum ducimus aspernatur placeat a totam deserunt! Vel quaerat deleniti dolore aperiam similique nam harum, aliquam fugiat adipisci aliquid laborum amet.
+                </div>
+                
+                <button>The text overflowing outside the div.box will not affect the position of this button, because the overflow is only visual.</button>
+                -->
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                }
+                
+                body {
+                    line-height: 1.5;
+                    font-family: sans-serif;
+                }
+                
+                .box {
+                    border: 2px solid tomato;
+                    width: 400px;
+                    height: 200px;
+                
+                    overflow: hidden;
+                }
+                
+                button {
+                    display: inline-block;
+                    margin-top: 30px;
+                    width: 360px;
+                    font: inherit;
+                } -->
+            </div>
+            <div>
+                <h3>UWAGA</h3>
+                <p>
+                    Pamiętaj, że w tym przypadku przepełniona treść nie jest dostępna i jest ukryta przed użytkownikiem. Dlatego nigdy nie ustawiamy stałej wysokości dla bloków tekstowych.
+                </p>
+            </div>
+            <div>
+                <h2>Wartość <span>scroll</span></h2>
+                <p>
+                    Jeśli ustawiona wartość <span>scroll</span>, przepełniona treść zostanie ukryta, ale pojawią się paski przewijania, aby można było wyświetlić całą zawartość. Spowoduje to wyświetlenie zarówno poziomych, jak i pionowych pasków przewijania, nawet jeśli potrzebny jest tylko jeden.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/xxZJLay -->
+                <!-- HTML -->
+                <!-- <div class="box">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cum quibusdam similique debitis eos, fuga in ipsum quaerat impedit, nam error atque sequi laudantium incidunt hic assumenda! Autem, voluptatum ratione. Ab illum quasi exercitationem dignissimos, quae est eaque eligendi maxime omnis laudantium quos, doloremque adipisci quidem dicta recusandae facilis? Velit, commodi consectetur, quas a repudiandae magni illo iure rem obcaecati quam officiis cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae voluptate incidunt alias, possimus laudantium molestias soluta, ea nihil delectus praesentium ipsum ducimus aspernatur placeat a totam deserunt! Vel quaerat deleniti dolore aperiam similique nam harum, aliquam fugiat adipisci aliquid laborum amet.
+                  </div> -->
+
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    line-height: 1.5;
+                    font-family: sans-serif;
+                  }
+                  
+                  .box {
+                    border: 2px solid tomato;
+                    width: 400px;
+                    height: 200px;
+                  
+                    overflow: scroll;
+                  } -->
+            </div>
+            <div>
+                <h2>Wartość <span>auto</span></h2>
+                <p>
+                    Wartość <span>auto</span> jest podobna do wartości <span>scroll</span>, z wyjątkiem tego, że wyświetlane są tylko te paski przewijania, które są rzeczywiście potrzebne.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/dyGjzaE -->
+                <!-- HTML -->
+                <!-- <div class="box">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cum quibusdam similique debitis eos, fuga in ipsum quaerat impedit, nam error atque sequi laudantium incidunt hic assumenda! Autem, voluptatum ratione. Ab illum quasi exercitationem dignissimos, quae est eaque eligendi maxime omnis laudantium quos, doloremque adipisci quidem dicta recusandae facilis? Velit, commodi consectetur, quas a repudiandae magni illo iure rem obcaecati quam officiis cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae voluptate incidunt alias, possimus laudantium molestias soluta, ea nihil delectus praesentium ipsum ducimus aspernatur placeat a totam deserunt! Vel quaerat deleniti dolore aperiam similique nam harum, aliquam fugiat adipisci aliquid laborum amet.
+                  </div> -->
+
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    line-height: 1.5;
+                    font-family: sans-serif;
+                  }
+                  
+                  .box {
+                    border: 2px solid tomato;
+                    width: 400px;
+                    height: 200px;
+                  
+                    overflow: auto;
+                  } -->
+            </div>
+            <div>
+                <h2>Zaokrąglone obrazy</h2>
+                <p>
+                    Obrazy zachowują się w taki sposób, że wizualnie wychodzą poza blok, jeśli ich rozmiar jest większy. Ta funkcja pojawia się w technice zaokrąglania ramek obrazu. Obraz zmienia się w „krawężnik”, który służy do określenia stylu ramki i jej promienia.
+                </p>
+
+                <!-- <div class="thumb">
+                    <img src="" alt="" />
+                </div> -->
+
+                <p>
+                    Ze względu na to, że obraz zawsze przepełnia blok, wizualnie wykraczając poza jego granice, okazuje się, że to nie do końca jest to, co potrzebne.
+                </p>
+                <!-- overflow-cat-1.jpg -->
+                <p>
+                    Z pomocą przychodzi właściwość <span>overflow</span> i jej wartość <span>hidden</span>, która jest ustawiona dla „krawężnika” i kontroluje widoczność przepełnionej treści. Kolor i rozmiar ramki w przykładzie są ustawione do wizualizacji; nie jest konieczne ustawianie jakichkolwiek wartości oprócz promienia.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/gOPjxVr -->
+                <!-- HTML -->
+                <!-- <div class="thumb">
+                    <img src="https://images.pexels.com/photos/33492/cat-red-cute-mackerel.jpg?auto=compress&cs=tinysrgb&h=480&w=640" alt="">
+                  </div> -->
+
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                  }
+                  
+                  .thumb {
+                    border: 10px solid green;
+                    border-radius: 50px;
+                    width: 480px;
+                  
+                    overflow: hidden;
+                  } -->
+
+            </div>
+            <div>
+                <h2>Dekoracyjna nakładka (overlay)</h2>
+                <p>
+                    Właściwość <span>overflow</span> z wartością <span>hidden</span> jest wykorzystywana przy tworzeniu efektów dekoracyjnych z ukrytą zawartością pojawiającą się spoza granic bloku.
+                </p>
+                <!-- https://codepen.io/goit-academy/pen/rNxrGMQ -->
+                <!-- HTML -->
+                <!-- <h1>Move the mouse over the square</h1>
+                <div class="box">
+                <div class="overlay">
+                    <p>This content is hidden through transformation and only appears when hovering over <code>div.box</code></p>
+                </div>
+                </div> 
+                -->
+
+                <!-- CSS -->
+                <!-- * {
+                    box-sizing: border-box;
+                  }
+                  
+                  body {
+                    line-height: 1.5;
+                    font-family: sans-serif;
+                    background-color: #f9f9fd;
+                  }
+                  
+                  h1 {
+                    text-align: center;
+                    font-size: 24px;
+                  }
+                  
+                  .box {
+                    position: relative;
+                    width: 300px;
+                    height: 300px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: #bdbdbd;
+                    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                  
+                    overflow: hidden;
+                  }
+                  
+                  .box:hover .overlay {
+                    transform: translatex(0);
+                  }
+                  
+                  .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #3f51b5;
+                  
+                    transform: translatex(-100%);
+                    transition: transform 250ms ease;
+                  }
+                  
+                  .overlay > p {
+                    color: #fff;
+                    padding: 10px;
+                    margin: 0;
+                    font-size: 18px;
+                  }
+                  
+                  .overlay code {
+                    display: inline-block;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    background-color: #fff;
+                    color: #2a2a2a;
+                  } 
+                -->
+                
+                <p>
+                    Efekt ten jest realizowany w kilku prostych krokach. Przyjrzyjmy się stylom, aby stworzyć efekt; pełny kod zobacz w przykładzie.
+                </p>
+
+                <!-- <div class="box">
+                    <div class="overlay"></div>
+                </div> -->
+
+                <p>
+                    Najpierw należy bezwzględnie ustawić <span>div.overlay</span> w stosunku do <span>div.box</span> i rozciągnąć ją do pełnej szerokości i wysokości <span>div.box</span>.
+                </p>
+
+                <!-- .box {
+                    position: relative;
+                  }
+                  
+                  .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  } -->
+
+                  <p>
+                    Używając właściwości <span>translateX</span>transform i <span>translateX</span>, przesuwamy <span>div.overlay</span> w lewo o 100% jej szerokości. Później omówimy szczegółowo transformacje.
+                  </p>
+                  
+                  <!-- .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  
+                    transform: translateX(-100%);
+                  } -->
+
+                  <p>
+                    Po najechaniu kursorem na <span>div.box</span>, za pomocą <span>transform</span> i <span>translateX</span>, zwrócimy elementowi <span>div.overlay</span> jego pierwotną pozycję.
+                  </p>
+
+                  <!-- .box:hover .overlay {
+                    transform: translateX(0);
+                  } -->
+
+                  <p>
+                    Ustawimy <span>div.box</span> na właściwość <span>overflow</span> z wartością <span>hidden</span>, aby wizualnie ukryć <span>div.overlay</span>, gdy jest on przesunięty poza <span>div.box</span>.
+                  </p>
+
+                  <!-- .box {
+                    position: relative;
+                    overflow: hidden;
+                  } -->
+
+                  <p>
+                    W następnych lekcjach szczegółowo omówimy animację, na razie używamy tylko jednej właściwości do wizualizacji pojawienia overlay (nakładki). Dodajemy przejście <span>div.overlay</span> dla animacji właściwości <span>transform</span>.
+                  </p>
+
+                  <!-- .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  
+                    transform: translateX(-100%);
+                    transition: transform 250ms ease;
+                  } -->
+
+            </div>
+        </main>
+        <footer>
+            <a href="#">Wartość <span>visible</span></a>
+            <a href="#">Wartość <span>hidden</span></a>
+            <a href="#">Wartość <span>scroll</span></a>
+            <a href="#">Wartość <span>auto</span></a>
+            <a href="#">Zaokrąglone obrazy</a>
+            <a href="#">Dekoracyjna nakładka (overlay)</a>
+        </footer>
+    </body>
+</html>
